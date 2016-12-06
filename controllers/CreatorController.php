@@ -78,5 +78,12 @@ class CreatorController extends \yii\web\Controller {
 		return $this->redirect(Yii::$app->request->referrer);
 	}
 
-
+    protected function findMenu($id)
+    {
+        if (($model = Model::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The menu does not exist.');
+        }
+    }
 }
